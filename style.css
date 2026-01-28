@@ -252,6 +252,12 @@ details summary{
 }
 .thumb-feature img{ aspect-ratio: 1/1; }
 
+.thumb video{
+  width: 100%;
+  display: block;
+}
+
+
 .about{
   display:grid;
   grid-template-columns: 1.2fr .8fr;
@@ -323,10 +329,4 @@ details summary{
   }
   .nav-menu.open{ display:flex; }
   .two-col{ columns: 1; }
-}
-.thumb video{
-  width: 100%;
-  display: block;
-  aspect-ratio: 1 / 1;   /* optional */
-  object-fit: cover;     /* optional */
 }
