@@ -324,3 +324,9 @@ details summary{
   .nav-menu.open{ display:flex; }
   .two-col{ columns: 1; }
 }
+.thumb video{
+  width: 100%;
+  display: block;
+  aspect-ratio: 1 / 1;   /* optional */
+  object-fit: cover;     /* optional */
+}
