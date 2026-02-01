@@ -6,6 +6,7 @@
   <title>Luc Bachmann — Unreal Engine Developer</title>
   <meta name="description" content="Portfolio of Luc Bachmann, Unreal Engine developer. Steam title, game jam projects, and 3D art." />
   <link rel="stylesheet" href="style.css" />
+  <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.3.0/model-viewer.min.js"></script>
 </head>
 
 <body>
@@ -225,7 +226,28 @@
   </div>
 </section>
 
-
+    <!-- INTERACTIVE 3D MODEL -->
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <h3>Interactive 3D Model</h3>
+      <p class="muted">Click and drag to rotate • Scroll to zoom</p>
+    </div>
+    <figure class="thumb thumb-feature">
+      <model-viewer 
+        src="assets/DarkSwordFinal.glb" 
+        alt="Dark Sword 3D Model"
+        auto-rotate 
+        camera-controls
+        shadow-intensity="1"
+        exposure="1"
+        environment-image="neutral"
+        style="width: 100%; height: 600px; background-color: #202020; border-radius: 8px;">
+      </model-viewer>
+      <figcaption>Dark Sword - Hard-surface model (Blender)</figcaption>
+    </figure>
+  </div>
+</section>
 
 
 
