@@ -23,6 +23,42 @@ if (year) year.textContent = String(new Date().getFullYear());
 
 // Campfire Glowing Effect - Border animation handled by CSS
 
+// Phase In/Out Scroll Animation
+document.addEventListener('DOMContentLoaded', () => {
+  // Add class to enable animations
+  document.body.classList.add('animate-on-scroll');
+  
+  const observerOptions = {
+    threshold: [0, 0.1, 0.3],
+    rootMargin: '-10% 0px -10% 0px'
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('phase-in');
+        entry.target.classList.remove('phase-out');
+      } else {
+        // Only phase out if scrolled past (above viewport)
+        if (entry.boundingClientRect.top < 0) {
+          entry.target.classList.add('phase-out');
+          entry.target.classList.remove('phase-in');
+        }
+      }
+    });
+  }, observerOptions);
+
+  // Observe all sections and cards
+  document.querySelectorAll('.section, .card, .hero-card, .thumb').forEach(el => {
+    observer.observe(el);
+  });
+  
+  // Make hero elements always visible
+  document.querySelectorAll('.hero, .hero .hero-card, .hero .hero-copy').forEach(el => {
+    el.classList.add('phase-in');
+  });
+});
+
 // Three.js 3D Model Viewer
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
