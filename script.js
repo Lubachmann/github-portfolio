@@ -32,7 +32,7 @@ const canvas = document.getElementById('sword-canvas');
 if (canvas) {
   // Scene setup
   const scene = new THREE.Scene();
-  scene.background = new THREE.Color(0x0a0a0a);
+  scene.background = new THREE.Color(0x1a1a1a);
 
   // Camera setup
   const camera = new THREE.PerspectiveCamera(
@@ -52,21 +52,26 @@ if (canvas) {
   renderer.setSize(canvas.clientWidth, canvas.clientHeight);
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
   renderer.toneMapping = THREE.ACESFilmicToneMapping;
-  renderer.toneMappingExposure = 1.8;
+  renderer.toneMappingExposure = 2.5;
   renderer.outputColorSpace = THREE.SRGBColorSpace;
 
-  // Bright lighting to clearly see the model
-  const ambientLight = new THREE.AmbientLight(0xffffff, 1.5);
+  // Very bright lighting to clearly see the model
+  const ambientLight = new THREE.AmbientLight(0xffffff, 2.5);
   scene.add(ambientLight);
 
-  const directionalLight = new THREE.DirectionalLight(0xffffff, 2.0);
+  const directionalLight = new THREE.DirectionalLight(0xffffff, 3.0);
   directionalLight.position.set(5, 5, 5);
   scene.add(directionalLight);
   
   // Add rim light for better model visibility
-  const rimLight = new THREE.DirectionalLight(0xffffff, 1.0);
+  const rimLight = new THREE.DirectionalLight(0xffffff, 1.5);
   rimLight.position.set(-5, 3, -5);
   scene.add(rimLight);
+  
+  // Add fill light from below
+  const fillLight = new THREE.DirectionalLight(0xffffff, 1.0);
+  fillLight.position.set(0, -3, 2);
+  scene.add(fillLight);
 
   // Orbit controls
   const controls = new OrbitControls(camera, canvas);
@@ -82,7 +87,7 @@ if (canvas) {
   let model;
 
   loader.load(
-    'assets/DarkSwordFinal.glb',
+    'assets/DarkSwordTry1.glb',
     (gltf) => {
       model = gltf.scene;
       
