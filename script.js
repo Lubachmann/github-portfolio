@@ -50,19 +50,19 @@ if (canvas) {
   renderer.setSize(canvas.clientWidth, canvas.clientHeight);
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
   renderer.toneMapping = THREE.ACESFilmicToneMapping;
-  renderer.toneMappingExposure = 1.2;
+  renderer.toneMappingExposure = 1.8;
   renderer.outputColorSpace = THREE.SRGBColorSpace;
 
-  // Balanced lighting to see model while preserving emission
-  const ambientLight = new THREE.AmbientLight(0xffffff, 0.8);
+  // Bright lighting to clearly see the model
+  const ambientLight = new THREE.AmbientLight(0xffffff, 1.5);
   scene.add(ambientLight);
 
-  const directionalLight = new THREE.DirectionalLight(0xffffff, 1.2);
+  const directionalLight = new THREE.DirectionalLight(0xffffff, 2.0);
   directionalLight.position.set(5, 5, 5);
   scene.add(directionalLight);
   
   // Add rim light for better model visibility
-  const rimLight = new THREE.DirectionalLight(0xffffff, 0.5);
+  const rimLight = new THREE.DirectionalLight(0xffffff, 1.0);
   rimLight.position.set(-5, 3, -5);
   scene.add(rimLight);
 
