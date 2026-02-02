@@ -21,6 +21,25 @@ if (toggle && menu) {
 const year = document.querySelector("#year");
 if (year) year.textContent = String(new Date().getFullYear());
 
+// Campfire Glowing Effect
+const glowWrappers = document.querySelectorAll('.glow-wrapper');
+
+glowWrappers.forEach(wrapper => {
+  wrapper.addEventListener('mousemove', (e) => {
+    const rect = wrapper.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    
+    wrapper.style.setProperty('--mouse-x', `${x}px`);
+    wrapper.style.setProperty('--mouse-y', `${y}px`);
+  });
+  
+  wrapper.addEventListener('mouseleave', () => {
+    wrapper.style.setProperty('--mouse-x', '50%');
+    wrapper.style.setProperty('--mouse-y', '50%');
+  });
+});
+
 // Three.js 3D Model Viewer
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
